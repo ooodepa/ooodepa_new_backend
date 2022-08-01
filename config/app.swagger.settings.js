@@ -1,6 +1,6 @@
 const appSettings = require('./app.settings');
 
-const host = `${appSettings.host}:${appSettings.port}/api`
+const host = `${appSettings.APP__HOST}:${appSettings.APP__PORT}/api`
   .replace('http://', '')
   .replace('https://', '');
 
@@ -19,17 +19,16 @@ const swaggerSettings = {
     },
     tags: [
       {
-        name: 'hello',
-        description: 'Эндпоинт для проверки работы сервера.',
+        name: '/api/',
+        description: 'Документация API.',
       },
     ],
     schemes: ['http'],
   },
   apis: [
-    'src/routes/hello/GET/helloGet.js',
-    'src/routes/redoc/GET/redocGet.js',
-    'src/routes/swagger/GET/swaggerGet.js',
-    'src/routes/swagger.json/GET/swaggerJsonGet.js',
+    'routes/swagger/index.js',
+    'routes/swagger.json/index.js',
+    'routes/redoc/index.js',
   ],
 };
 
