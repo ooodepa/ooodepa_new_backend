@@ -6,12 +6,15 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mysql2": "^2.3.3",
     "redoc-express": "^1.0.0",
+    "sequelize": "^6.21.3",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.5.0"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node app.js",
+    "docker-dev": "nodemon --legacy-watch app.js",
+    "dev": "nodemon app.js"
   }
 }

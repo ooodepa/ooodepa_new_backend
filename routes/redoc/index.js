@@ -1,7 +1,19 @@
 const express = require('express');
-const router = express.Router();
 const redoc = require('redoc-express');
 
+const router = express.Router();
+
+/**
+ *  @openapi
+ *  /api/redoc:
+ *    get:
+ *      tags:
+ *        - /api/
+ *      description: Документация Redoc
+ *      responses:
+ *        '200':
+ *          description: Успешный запрос
+ */
 router.get(
   '/redoc',
   redoc({
@@ -11,15 +23,3 @@ router.get(
 );
 
 module.exports = router;
-
-/**
- *  @openapi
- *  /api/redoc:
- *    get:
- *      tags:
- *        - documentation
- *      description: Документация Redoc
- *      responses:
- *        '200':
- *          description: Успешный запрос
- */
