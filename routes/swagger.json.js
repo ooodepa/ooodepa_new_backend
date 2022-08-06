@@ -1,7 +1,7 @@
 const express = require('express');
 const swaggerJsDoc = require('swagger-jsdoc');
 
-const swaggerSettings = require('./../../config/app.swagger.settings');
+const swaggerSettings = require('../config/app.swagger.settings');
 
 const router = express.Router();
 
@@ -15,6 +15,10 @@ const router = express.Router();
  *      responses:
  *        '200':
  *          description: Успешный запрос
+ *        '500':
+ *          description: Ошибка на сервере
+ *          schema:
+ *            $ref: '#/definitions/Message'
  */
 router.get('/swagger.json', (request, response) => {
   try {

@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ${SEQUELIZE__DATABASE}
+      MYSQL_USER: ${SEQUELIZE__USERNAME}
+      MYSQL_PASSWORD: ${SEQUELIZE__PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DATABASE__ROOT_PASSWORD}
+    volumes:
+      - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/etc/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/var/lib/mysql:/var/lib/mysql
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - APP__HOST=${APP__HOST}
+        - APP__PORT=${APP__PORT}
+        - APP__JWT_SECRET=${APP__JWT_SECRET}
+        - APP__JWT_TOKEN_EXPIRES_IN=${APP__HAPP__JWT_TOKEN_EXPIRES_INOST}
+        - SEQUELIZE__DIALECT=${SEQUELIZE__DIALECT}
+        - SEQUELIZE__LOGGING=${SEQUELIZE__LOGGING}
+        - SEQUELIZE__HOST=db
+        - SEQUELIZE__USERNAME=${SEQUELIZE__USERNAME}
+        - SEQUELIZE__PASSWORD=${SEQUELIZE__PASSWORD}
+        - SEQUELIZE__PORT=${SEQUELIZE__PORT}
+        - SEQUELIZE__DATABASE=${SEQUELIZE__DATABASE}
+        - SEQUELIZE__TIMEZONE=${SEQUELIZE__TIMEZONE}
+        - SEQUELIZE__TIMESTAMPS=${SEQUELIZE__TIMESTAMPS}
+    ports:
+      - 80:${APP__PORT}
+    command: npm run start
+    depends_on:
+      - db

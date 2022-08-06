@@ -14,12 +14,9 @@ services:
       - ./docker/etc/mysql/conf.d:/etc/mysql/conf.d
       - ./docker/var/lib/mysql:/var/lib/mysql
   nodejs:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: pavelinnokentevichgalanin/ooodepa_backend
     ports:
-      - 80:${APP__PORT}
+      - 80:5000
     command: npm run start
     depends_on:
       - db
-    command: npm run start
