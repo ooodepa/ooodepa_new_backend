@@ -20,16 +20,51 @@ const swaggerSettings = {
     tags: [
       {
         name: '/api/',
-        description: 'Документация API.',
+        description: 'Документация API',
+      },
+      {
+        name: '/api/auth/',
+        description: 'Авторизация',
+      },
+      {
+        name: '/api/contact-types',
+        description: 'CRUD операции со справочным документом "Типы контакта"',
+      },
+      {
+        name: '/api/contacts',
+        description: 'CRUD операции со справочным документом "Контакты"',
       },
     ],
     schemes: ['http'],
+    securityDefinitions: {
+      Bearer: {
+        type: 'apiKey',
+        name: 'Authorization',
+        in: 'header',
+      },
+    },
   },
   apis: [
-    'routes/swagger/index.js',
-    'routes/swagger.json/index.js',
-    'routes/redoc/index.js',
+    'config/app.swagger.settings.js',
+    'routes/swagger.js',
+    'routes/swagger.json.js',
+    'routes/redoc.js',
+
+    'scripts/MiddlewareTypeCheck.js',
+
+    'routes/auth.js',
+    'routes/contact-types.js',
+    'routes/contacts.js',
   ],
 };
 
 module.exports = swaggerSettings;
+
+/**
+ *  @openapi
+ *  definitions:
+ *    Message:
+ *      properties:
+ *        message:
+ *          type: string
+ */

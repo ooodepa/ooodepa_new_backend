@@ -2,7 +2,7 @@ const express = require('express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUiExpress = require('swagger-ui-express');
 
-const swaggerSettings = require('./../../config/app.swagger.settings');
+const swaggerSettings = require('../config/app.swagger.settings');
 
 const router = express.Router();
 
@@ -17,7 +17,6 @@ const router = express.Router();
  *        '200':
  *          description: Успешный запрос
  */
-
 router.use(
   '/swagger',
   swaggerUiExpress.serve,

@@ -4,13 +4,18 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "redoc-express": "^1.0.0",
     "sequelize": "^6.21.3",
     "swagger-jsdoc": "^6.2.1",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "node app.js",
